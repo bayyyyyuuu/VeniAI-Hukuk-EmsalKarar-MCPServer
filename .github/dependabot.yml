@@ -1,0 +1,14 @@
+version: 2
+updates:
+  - package-ecosystem: "npm" # Bun uses package.json, so npm ecosystem still works for updates
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "dependencies"
+      - "security"
+    open-pull-requests-limit: 10
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"

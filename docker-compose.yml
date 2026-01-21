@@ -1,0 +1,50 @@
+services:
+  # The Yargitay MCP Server
+  mcp-server:
+    build: .
+    container_name: yargitay-mcp-server
+    restart: unless-stopped
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/yargitay?sslmode=disable
+      - BROWSERLESS_URL=ws://browserless:3000
+      - BROWSERLESS_TOKEN=yoursecrettoken
+      - NODE_ENV=development
+    depends_on:
+      db:
+        condition: service_healthy
+      browserless:
+        condition: service_started
+
+  # Database (L2 Cache & Analytics)
+  db:
+    image: postgres:17-alpine
+    container_name: yargitay-db
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=yargitay
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./src/database/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Local Browserless instance for scraping
+  browserless:
+    image: browserless/chrome:latest
+    container_name: yargitay-browserless
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - TOKEN=yoursecrettoken
+      - MAX_CONCURRENT_SESSIONS=10
+
+volumes:
+  postgres_data:

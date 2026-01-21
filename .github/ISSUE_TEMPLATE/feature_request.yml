@@ -1,0 +1,21 @@
+name: Özellik Talebi (Feature Request)
+description: Yeni bir özellik veya geliştirme önerin
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: İstenen Özellik Nedir?
+      description: Önerdiğiniz özelliğin ne işe yarayacağını ve neden gerekli olduğunu açıklayın.
+    validations:
+      required: true
+  - type: textarea
+    id: alternative-solutions
+    attributes:
+      label: Alternatif Çözümler
+      description: Eğer varsa düşündüğünüz alternatif yöntemleri belirtin.
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Ek Bilgiler
+      description: Varsa ekran görüntüleri, referanslar veya teknik detaylar ekleyin.

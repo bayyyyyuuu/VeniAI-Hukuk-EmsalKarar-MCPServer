@@ -1,0 +1,12 @@
+node_modules
+dist
+.git
+.github
+*.lockb
+package-lock.json
+docker-compose.yml
+Dockerfile
+.env*
+LICENSE
+CONTRIBUTING.md
+SECURITY.md

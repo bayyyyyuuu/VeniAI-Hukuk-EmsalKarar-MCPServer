@@ -1,0 +1,38 @@
+name: Hata Bildirimi (Bug Report)
+description: Tespit ettiğiniz bir hatayı bildirin
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Hatayı en kısa sürede çözebilmemiz için lütfen aşağıdaki bilgileri doldurun.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: Ne oldu?
+      description: Karşılaştığınız hatayı net bir şekilde açıklayın.
+      placeholder: Örneğin; sorgu sonucunda JSON ayrıştırma hatası alıyorum...
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Hatayı nasıl tekrarlarız?
+      description: Bu hatayı almamızı sağlayacak adımları listeleyin.
+      placeholder: |
+        1. Sunucuyu başlatın
+        2. '...' sorgusunu yapın
+        3. Sonuç ekranını bekleyin
+    validations:
+      required: true
+  - type: input
+    id: node-version
+    attributes:
+      label: Node.js Versiyonu
+      placeholder: v18.17.0
+  - type: textarea
+    id: logs
+    attributes:
+      label: Loglar veya Hata Mesajları
+      description: Eğer varsa terminal çıktılarını buraya yapıştırın.
+      render: shell

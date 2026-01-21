@@ -2,7 +2,8 @@
   "name": "yargitay-mcp-server",
   "private": true,
   "description": "Veni AI-built MCP server for Yargitay precedent search with Browserless and PostgreSQL cache.",
-  "author": "Veni AI",
+  "author": "Veni AI (https://www.veniplatform.com)",
+  "homepage": "https://www.veniplatform.com",
   "license": "MIT",
   "main": "dist/index.js",
   "engines": {
@@ -20,9 +21,14 @@
     "postgres"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "start": "node dist/index.js",
-    "type-check": "tsc -p tsconfig.json --noEmit"
+    "build": "bun x tsc -p tsconfig.json",
+    "start": "bun run dist/index.js",
+    "type-check": "bun x tsc -p tsconfig.json --noEmit",
+    "knip": "bun x knip",
+    "test": "vitest run",
+    "lint:md": "remark .",
+    "format": "bun x prettier --write .",
+    "prepare": "husky"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.25.3",
@@ -31,8 +37,21 @@
     "puppeteer": "^22.4.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^20.3.1",
+    "@commitlint/config-conventional": "^20.3.1",
     "@types/node": "^22.10.5",
     "@types/pg": "^8.10.9",
-    "typescript": "^5.4.2"
+    "husky": "^9.1.7",
+    "knip": "^5.82.1",
+    "lint-staged": "^16.2.7",
+    "remark-cli": "^12.0.1",
+    "remark-preset-lint-recommended": "^7.0.1",
+    "typescript": "^5.4.2",
+    "vitest": "^4.0.17"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,js,json}": [
+      "bun x prettier --write"
+    ]
   }
 }

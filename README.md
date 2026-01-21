@@ -1,10 +1,25 @@
 <div align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Scale_of_Justice.svg" width="96" alt="Scale of justice" />
-  <h1>Yargitay Emsal Karar MCP Server</h1>
   <p>
-    Veni AI tarafindan gelistirilen ve dunyanin en iyi Yargitay emsal karar arama MCP sunucusu olmak uzere tasarlanan,
-    stdio tabanli, uctan uca teknik odakli bir arama altyapisi.
+    <a href="https://www.veniplatform.com/">
+      <img src="https://www.veniplatform.com/_next/image?url=%2Fveniai-logo.webp&w=64&q=75" width="72" alt="Veni AI logosu" />
+    </a>
   </p>
+  <h1>Yargıtay Emsal Karar MCP Sunucusu</h1>
+  <p>
+    Veni AI tarafından geliştirilen ve dünyanın en iyi Yargıtay emsal karar arama MCP sunucusu olmak üzere tasarlanan,
+    stdio tabanlı, uçtan uca teknik odaklı bir arama altyapısı.
+  </p>
+  <p>
+    <a href="https://www.veniplatform.com/">Veni Platform</a> |
+    <a href="https://www.veniplatform.com/mcp-servers">Daha fazla MCP sunucusu</a>
+  </p>
+  <hr />
+  <p>
+    <strong>Şirketiniz veya fikriniz için özelleştirilmiş MCP Sunucusu mu istiyorsunuz?</strong><br />
+    Veni AI olarak, kurumsal ihtiyaçlarınıza özel profesyonel MCP çözümleri geliştiriyoruz.<br />
+    👉 <a href="https://www.veniplatform.com/mcp-servers">İletişime Geçin & Detayları İnceleyin</a>
+  </p>
+  <hr />
 </div>
 
 <p align="center">
@@ -17,80 +32,75 @@
 </p>
 
 <p align="center">
-  <a href="#quickstart">Quickstart</a> |
-  <a href="#tools">Tools</a> |
-  <a href="#architecture">Architecture</a> |
-  <a href="#environment">Environment</a> |
-  <a href="#claude-desktop-config">Claude Desktop</a> |
-  <a href="#security-and-privacy">Security</a>
+  <a href="#hızlı-başlangıç">Hızlı Başlangıç</a> |
+  <a href="#araçlar">Araçlar</a> |
+  <a href="#mimari">Mimari</a> |
+  <a href="#ortam">Ortam</a> |
+  <a href="#claude-desktop-yapılandırması">Claude Desktop</a> |
+  <a href="#güvenlik-ve-gizlilik">Güvenlik</a>
 </p>
 
 <details>
-<summary>Table of contents (click to show)</summary>
+<summary>İçindekiler (göstermek için tıklayın)</summary>
 
-- [Overview](#overview)
-- [Highlights](#highlights)
-- [Architecture](#architecture)
-- [Tools](#tools)
-- [Quickstart](#quickstart)
-- [Claude Desktop Config](#claude-desktop-config)
-- [Environment](#environment)
-- [Database Schema](#database-schema)
-- [Browserless Setup](#browserless-setup)
-- [Caching Model](#caching-model)
-- [Output Contract](#output-contract)
-- [Performance Tuning](#performance-tuning)
-- [Security and Privacy](#security-and-privacy)
-- [Operational Notes](#operational-notes)
-- [FAQ](#faq)
-- [Roadmap](#roadmap)
-- [Credits](#credits)
-- [License](#license)
+- [Genel Bakış](#genel-bakış)
+- [Öne Çıkanlar](#öne-çıkanlar)
+- [Mimari](#mimari)
+- [Araçlar](#araçlar)
+- [Hızlı Başlangıç](#hızlı-başlangıç)
+- [Claude Desktop Yapılandırması](#claude-desktop-yapılandırması)
+- [Ortam](#ortam)
+- [Veritabanı Şeması](#veritabanı-şeması)
+- [Browserless Kurulumu](#browserless-kurulumu)
+- [Önbellek Modeli](#önbellek-modeli)
+- [Çıktı Formatı](#çıktı-formatı)
+- [Performans Ayarı](#performans-ayarı)
+- [Güvenlik ve Gizlilik](#güvenlik-ve-gizlilik)
+- [Operasyonel Notlar](#operasyonel-notlar)
+- [SSS](#sss)
+- [Yol Haritası](#yol-haritası)
+- [Emeği Geçenler](#emeği-geçenler)
+- [Lisans](#lisans)
 </details>
 
-## Overview
+## Genel Bakış
 
-This repository contains a pure MCP (Model Context Protocol) server for Yargitay precedent search. It runs on stdio,
-is designed for MCP clients like Claude Desktop, and provides high quality results via a 3 tier cache:
-memory, PostgreSQL, and Browserless based scraping.
+Bu depo, Yargıtay emsal karar araması için tamamen MCP (Model Context Protocol) tabanlı bir sunucu içerir. stdio
+üzerinden çalışır, Claude Desktop gibi MCP istemcileri için tasarlanmıştır ve üç katmanlı önbellek ile yüksek kaliteli
+sonuçlar sağlar: bellek, PostgreSQL ve Browserless tabanlı tarama.
 
-The server is intentionally HTTP free. It focuses on MCP tool ergonomics, deterministic outputs, and a clean
-deployment footprint for secure usage in local or controlled environments.
+Sunucu bilinçli olarak HTTP yüzeyi içermez. MCP araç ergonomisine, deterministik çıktılara ve güvenli kullanım için temiz
+bir dağıtım ayak izine odaklanır.
 
-## Highlights
+## Öne Çıkanlar
 
-- MCP stdio transport only, no HTTP surface.
-- 3 tier cache with unified telemetry and controlled expiry.
-- Browserless + Puppeteer scraping for reliable content extraction.
-- PostgreSQL backed analytics for popularity and performance insights.
-- Strict input validation and predictable output format.
-- Built by Veni AI to be the worlds best Yargitay precedent search MCP server.
+- Yalnızca MCP stdio taşıması, HTTP yüzeyi yok.
+- Birleşik telemetri ve kontrollü sona erme ile 3 katmanlı önbellek.
+- Güvenilir içerik çıkarımı için Browserless + Puppeteer tarama.
+- Popülerlik ve performans içgörüleri için PostgreSQL destekli analitik.
+- Sıkı girdi doğrulama ve öngörülebilir çıktı formatı.
+- Dünyanın en iyi Yargıtay emsal karar arama MCP sunucusu olmak üzere Veni AI tarafından geliştirildi.
 
-## Architecture
+## Mimari
 
-```
-[MCP Client]
-    |
-    | stdio
-    v
-[MCP Server] ----> [L1 Memory Cache]
-    |                   |
-    |                   v
-    |               [PostgreSQL]
-    |
-    v
-[Browserless + Puppeteer] ---> [karararama.yargitay.gov.tr]
+```mermaid
+graph TD
+  Client[MCP İstemci] -->|stdio| Server[MCP Sunucu]
+  Server --> L1[L1 Bellek Önbelleği]
+  Server --> L2[(PostgreSQL)]
+  Server --> Browserless[Browserless + Puppeteer]
+  Browserless --> Source[karararama.yargitay.gov.tr]
 ```
 
-## Tools
+## Araçlar
 
-All tools return a single text payload that contains JSON for easy parsing in clients.
+Tüm araçlar, istemcilerde kolay ayrıştırma için JSON içeren tek bir metin yükü döndürür.
 
 ### yargitay_search_optimized
 
-Search Yargitay decisions using cache and Browserless scraping.
+Önbellek ve Browserless taramasıyla Yargıtay kararlarını arar.
 
-Input:
+Girdi:
 
 ```json
 {
@@ -99,27 +109,27 @@ Input:
 }
 ```
 
-Output keys:
+Çıktı anahtarları:
 
-- formatted: human friendly plain text list of results
+- formatted: kullanıcı dostu düz metin sonuç listesi
 - success: boolean
-- query: normalized query
-- results: array of decisions
+- query: normalize edilmiş sorgu
+- results: kararlar dizisi
 - metadata: source, cached, age, resultCount, totalTime
 
 ### yargitay_health
 
-Returns health status for Browserless, cache, and database.
+Browserless, önbellek ve veritabanı için sağlık durumunu döndürür.
 
 ### yargitay_stats
 
-Returns cache hit rates, timing metrics, and basic scraping config.
+Önbellek isabet oranları, zamanlama metrikleri ve temel tarama yapılandırmasını döndürür.
 
 ### yargitay_popular
 
-Lists popular queries from the database.
+Veritabanından popüler sorguları listeler.
 
-Input:
+Girdi:
 
 ```json
 { "limit": 20 }
@@ -127,9 +137,9 @@ Input:
 
 ### yargitay_analytics
 
-Returns daily analytics for the last N days.
+Son N gün için günlük analitikleri döndürür.
 
-Input:
+Girdi:
 
 ```json
 { "days": 7 }
@@ -137,17 +147,17 @@ Input:
 
 ### yargitay_cache_clear
 
-Triggers cache cleanup for memory and database.
+Bellek ve veritabanı için önbellek temizliğini tetikler.
 
-## Quickstart
+## Hızlı Başlangıç
 
-1) Install dependencies
+1) Bağımlılıkları yükleyin
 
 ```bash
 npm install
 ```
 
-2) Create your environment file
+2) Ortam dosyanızı oluşturun
 
 ```bash
 copy .env.example .env
@@ -155,20 +165,20 @@ copy .env.example .env
 # cp .env.example .env
 ```
 
-3) Initialize database schema
+3) Veritabanı şemasını başlatın
 
 ```bash
 psql "$DATABASE_URL" -f src/database/schema.sql
 ```
 
-4) Build and run
+4) Derleyip çalıştırın
 
 ```bash
 npm run build
 npm start
 ```
 
-## Claude Desktop Config
+## Claude Desktop Yapılandırması
 
 ```json
 {
@@ -186,57 +196,65 @@ npm start
 }
 ```
 
-## Environment
+## Ortam
 
-Use `.env.example` as the base. The following variables are supported:
+`.env.example` dosyasını temel alın. Aşağıdaki değişkenler desteklenir:
 
-| Variable | Required | Default | Notes |
+| Değişken | Zorunlu | Varsayılan | Notlar |
 | --- | --- | --- | --- |
-| DATABASE_URL | yes | - | PostgreSQL connection string |
-| DATABASE_TYPE | no | postgresql | Display only |
-| DATABASE_POOL_MIN | no | 2 | Pool min size |
-| DATABASE_POOL_MAX | no | 10 | Pool max size |
-| BROWSERLESS_URL | yes | - | wss or https endpoint |
-| BROWSERLESS_TOKEN | yes | - | Token appended to ws endpoint |
-| BROWSERLESS_TIMEOUT | no | 30000 | Milliseconds |
-| BROWSERLESS_RETRIES | no | 3 | Retry count |
-| SCRAPING_MAX_RESULTS | no | 10 | Per query limit |
-| SCRAPING_PARALLEL_REQUESTS | no | 3 | Parallel detail fetch |
-| SCRAPING_ADAPTIVE_TIMEOUT | no | true | Adaptive timeouts |
-| SCRAPING_RETRY_STRATEGY | no | exponential | exponential, linear, fixed |
-| SCRAPING_BASE_TIMEOUT | no | 10000 | Milliseconds |
-| CACHE_L1_TTL_MS | no | 300000 | Memory cache TTL |
-| CACHE_L2_TTL_DAYS | no | 30 | DB cache TTL |
-| CACHE_POPULAR_THRESHOLD | no | 5 | Popularity threshold |
-| CACHE_CLEANUP_INTERVAL_MS | no | 3600000 | Cleanup interval |
-| NODE_ENV | no | development | development or production |
+| DATABASE_URL | evet | - | PostgreSQL bağlantı dizesi |
+| DATABASE_TYPE | hayır | postgresql | Yalnızca görüntüleme |
+| DATABASE_POOL_MIN | hayır | 2 | Havuz min boyutu |
+| DATABASE_POOL_MAX | hayır | 10 | Havuz max boyutu |
+| BROWSERLESS_URL | evet | - | wss veya https uç noktası |
+| BROWSERLESS_TOKEN | evet | - | Token ws uç noktasına eklenir |
+| BROWSERLESS_TIMEOUT | hayır | 30000 | Milisaniye |
+| BROWSERLESS_RETRIES | hayır | 3 | Tekrar sayısı |
+| SCRAPING_MAX_RESULTS | hayır | 10 | Sorgu başına limit |
+| SCRAPING_PARALLEL_REQUESTS | hayır | 3 | Paralel detay çekimi |
+| SCRAPING_ADAPTIVE_TIMEOUT | hayır | true | Uyarlanabilir zaman aşımı |
+| SCRAPING_RETRY_STRATEGY | hayır | exponential | exponential, linear, fixed |
+| SCRAPING_BASE_TIMEOUT | hayır | 10000 | Milisaniye |
+| CACHE_L1_TTL_MS | hayır | 300000 | Bellek önbelleği TTL |
+| CACHE_L2_TTL_DAYS | hayır | 30 | DB önbelleği TTL |
+| CACHE_POPULAR_THRESHOLD | hayır | 5 | Popülerlik eşiği |
+| CACHE_CLEANUP_INTERVAL_MS | hayır | 3600000 | Temizlik aralığı |
+| NODE_ENV | hayır | development | development veya production |
 
-## Database Schema
+## Veritabanı Şeması
 
-Schema file:
+Şema dosyası:
 
 - `src/database/schema.sql`
 
-It creates tables for search results, decisions, scraping stats, and utility views for analytics. It also includes
-stored procedures for updating access counts and cleanup.
+Arama sonuçları, kararlar, tarama istatistikleri ve analitik için yardımcı görünümler oluşturan tablolar içerir.
+Ayrıca erişim sayacı güncellemeleri ve temizlik için saklı prosedürler bulunur.
 
-## Browserless Setup
+## Browserless Kurulumu
 
-- Set `BROWSERLESS_URL` to your Browserless endpoint (wss or https).
-- The server will append `?token=` automatically if not present.
-- `BROWSERLESS_TOKEN` is required and never logged.
+- `BROWSERLESS_URL` değerini Browserless uç noktanız olarak ayarlayın (wss veya https).
+- Sunucu, yoksa `?token=` parametresini otomatik olarak ekler.
+- `BROWSERLESS_TOKEN` zorunludur ve asla loglanmaz.
 
-## Caching Model
+## Önbellek Modeli
 
-- L1: in memory, ultra fast, short TTL.
-- L2: PostgreSQL, medium latency, long TTL.
-- L3: live scrape through Browserless.
+- L1: bellekte, ultra hızlı, kısa TTL.
+- L2: PostgreSQL, orta gecikme, uzun TTL.
+- L3: Browserless üzerinden canlı tarama.
 
-Cache promotion flows from L3 to L2 and L1. The `refresh` flag forces invalidation.
+Önbellek yükseltmesi L3'ten L2 ve L1'e akar. `refresh` bayrağı geçersizleştirmeyi zorlar.
 
-## Output Contract
+```mermaid
+graph LR
+  L3[L3 Canlı Tarama] -->|yükselt| L2[L2 PostgreSQL Önbelleği]
+  L2 -->|yükselt| L1[L1 Bellek Önbelleği]
+  Refresh[refresh=true] -->|geçersizleştir| L1
+  Refresh -->|geçersizleştir| L2
+```
 
-All tools return JSON inside MCP text content. Example from `yargitay_search_optimized`:
+## Çıktı Formatı
+
+Tüm araçlar MCP metin içeriği içinde JSON döndürür. `yargitay_search_optimized` için örnek:
 
 ```json
 {
@@ -263,49 +281,58 @@ All tools return JSON inside MCP text content. Example from `yargitay_search_opt
 }
 ```
 
-## Performance Tuning
+## Performans Ayarı
 
-- Increase `SCRAPING_PARALLEL_REQUESTS` if Browserless capacity is high.
-- Raise `BROWSERLESS_TIMEOUT` for long queries or slow networks.
-- Extend `CACHE_L2_TTL_DAYS` to reduce scraping load.
-- Use `yargitay_stats` to track cache hit rate and response time.
+- Browserless kapasitesi yüksekse `SCRAPING_PARALLEL_REQUESTS` değerini artırın.
+- Uzun sorgular veya yavaş ağlar için `BROWSERLESS_TIMEOUT` değerini yükseltin.
+- Tarama yükünü azaltmak için `CACHE_L2_TTL_DAYS` değerini uzatın.
+- Önbellek isabet oranı ve yanıt süresini takip etmek için `yargitay_stats` kullanın.
 
-## Security and Privacy
+## Güvenlik ve Gizlilik
 
-- No secrets are stored in the repository.
-- All credentials are supplied via environment variables.
-- Database URL is masked in logs.
-- Inputs are validated and sanitized before use.
+- Depoda hiçbir gizli bilgi tutulmaz.
+- Tüm kimlik bilgileri ortam değişkenleriyle sağlanır.
+- Veritabanı URL'si loglarda maskelenir.
+- Girdiler kullanılmadan önce doğrulanır ve temizlenir.
 
-## Operational Notes
+## Operasyonel Notlar
 
-- The data source is the public Yargitay search site. Availability and markup can change.
-- Database is strongly recommended for analytics and L2 cache. The server still runs if DB is down, but
-  analytics and L2 cache will degrade.
-- Use `yargitay_health` for quick status checks.
+- Veri kaynağı herkese açık Yargıtay arama sitesidir. Erişilebilirlik ve işaretleme değişebilir.
+- Analitik ve L2 önbellek için veritabanı şiddetle önerilir. Veritabanı kapalıyken sunucu çalışmaya devam eder, ancak
+  analitik ve L2 önbellek zayıflar.
+- Hızlı durum kontrolü için `yargitay_health` kullanın.
 
-## FAQ
+## SSS
 
-**Why no HTTP API?**  
-This server is MCP first and communicates over stdio by design.
+<details>
+<summary>Neden HTTP API yok?</summary>
 
-**Can I run it without PostgreSQL?**  
-Yes, but you will lose L2 cache and analytics.
+Bu sunucu MCP önceliklidir ve tasarım gereği stdio üzerinden iletişim kurar.
+</details>
 
-**Does it support detailed search filters?**  
-Current tools focus on query based search. Advanced filters can be added as tool arguments.
+<details>
+<summary>PostgreSQL olmadan çalıştırabilir miyim?</summary>
 
-## Roadmap
+Evet, ancak L2 önbellek ve analitik kaybolur.
+</details>
 
-- Advanced search filters and richer query schema.
-- SQLite support for lightweight deployments.
-- Structured result formatting presets.
-- Resource endpoints for cached datasets.
+<details>
+<summary>Ayrıntılı arama filtreleri destekleniyor mu?</summary>
 
-## Credits
+Mevcut araçlar sorgu tabanlı aramaya odaklanır. Gelişmiş filtreler araç argümanı olarak eklenebilir.
+</details>
 
-Built by Veni AI.
+## Yol Haritası
 
-## License
+- Gelişmiş arama filtreleri ve daha zengin sorgu şeması.
+- Hafif dağıtımlar için SQLite desteği.
+- Yapılandırılmış sonuç biçimlendirme ön ayarları.
+- Önbelleğe alınmış veri setleri için kaynak uç noktaları.
 
-MIT. See `LICENSE`.
+## Emeği Geçenler
+
+Veni AI tarafından geliştirildi.
+
+## Lisans
+
+MIT. `LICENSE` dosyasına bakın.

